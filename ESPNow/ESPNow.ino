@@ -111,6 +111,9 @@ void sendData() {
       Serial.print("Sending: ");
       Serial.println(data);
     }
+    while(Serial.available() == 0){
+    }
+    data = Serial.parseInt();
     esp_err_t result = esp_now_send(peer_addr, &data, sizeof(data));
     Serial.print("Send Status: ");
     if (result == ESP_OK) {
